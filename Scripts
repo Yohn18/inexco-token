@@ -1,1 +1,16 @@
+// deploy.js (contoh pakai Hardhat)
+const hre = require("hardhat");
+
+async function main() {
+  const InexToken = await hre.ethers.getContractFactory("InexToken");
+  const token = await InexToken.deploy("1000000000"); // 1 Miliar INEX
+
+  await token.deployed();
+  console.log("INEX deployed to:", token.address);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
 
